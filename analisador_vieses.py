@@ -1,57 +1,22 @@
-import re
+# VYRE • Cyber Psychology & Forensic Data
 
-def analisar_engenharia_social(texto):
-    # Dicionário de vieses psicológicos e seus respectivos gatilhos textuais
-    gatilhos = {
-        "Urgência Artificial (Medo/Pânico)": [
-            r"urgente", r"imediatamente", r"bloqueada", r"expira", r"atenção", 
-            r"último aviso", r"agora mesmo", r"evitar suspensão", r"com urgência"
-        ],
-        "Falsa Autoridade (Coerção/Validação)": [
-            r"banco", r"polícia", r"receita federal", r"gerente", r"suporte técnico", 
-            r"departamento de segurança", r"comunicado oficial", r"advogado"
-        ],
-        "Escassez/Ganância (Recompensa Imediata)": [
-            r"ganhou", r"sorteio", r"vaga exclusiva", r"recompensa", r"lucro", 
-            r"herança", r"resgate imediato", r"grátis", r"premiado"
-        ]
-    }
-    
-    print("=" * 60)
-    print("      VYRE LABS - RELATÓRIO DE ANÁLISE COMPORTAMENTAL REVERSA      ")
-    print("=" * 60)
-    print(f"Texto Analisado: \"{texto[:60]}...\"\n")
-    
-    total_ameacas = 0
-    
-    # Análise de padrões com expressões regulares
-    for vies, termos in gatilhos.items():
-        encontrados = []
-        for termo in termos:
-            # Busca ignorando maiúsculas/minúsculas
-            if re.search(termo, texto, re.IGNORECASE):
-                encontrados.append(termo.replace(r"", "")) 
-        
-        if encontrados:
-            print(f"🚨 VIES DETECTADO: {vies}")
-            print(f"   ↳ Padrões identificados: {', '.join(encontrados)}")
-            print(f"   ↳ Risco Psicológico: Manipulação cognitiva ativa.\n")
-            total_ameacas += len(encontrados)
-            
-    print("-" * 60)
-    if total_ameacas >= 3:
-        print("🔴 DIAGNÓSTICO FORENSE: Alta probabilidade de Engenharia Social / Phishing.")
-    elif total_ameacas > 0:
-        print("🟡 DIAGNÓSTICO FORENSE: Alerta. Presença de gatilhos persuasivos isolados.")
-    else:
-        print("🟢 DIAGNÓSTICO FORENSE: Padrões comportamentais limpos ou neutros.")
-    print("=" * 60)
+Repositório voltado ao desenvolvimento de ferramentas em Python aplicadas à **Psicologia Forense, Engenharia Reversa do Comportamento e Análise de Engenharia Social**.
 
-# Exemplo de simulação de um e-mail malicioso interceptado
-mensagem_suspeita = (
-    "Prezado cliente, sua conta bancária será BLOQUEADA imediatamente por motivos de segurança. "
-    "O Suporte Técnico do Banco solicita que clique no link agora mesmo para evitar a suspensão."
-)
+O ecossistema **VYRE** utiliza processamento de dados e análise linguística para decodificar padrões de manipulação psicológica e fraudes em ambientes digitais.
 
-# Executa o motor de análise
-analisar_engenharia_social(mensagem_suspeita)
+---
+
+## 🛠️ Ferramentas Disponíveis
+
+### 1. Analisador de Vieses Cognitivos (`analisador_vieses.py`)
+Mecanismo de triagem forense baseado em expressões regulares (RegEx) para identificar vetores de engenharia social através de gatilhos linguísticos em mensagens interceptadas.
+
+* **Foco Psicológico:** Análise dos princípios de influência e persuasão (Gatilhos de Urgência, Autoridade Artificial e Escassez).
+* **Foco Técnico:** Automação em Python e processamento léxico básico para triagem de ameaças corporativas.
+
+---
+
+## 🔬 Linha de Pesquisa e Fundamentação
+
+* **Psicologia Forense & Profiling:** Modelagem do comportamento do atacante (modi operandi) baseado em engenharia social.
+* **Cibersegurança Comportamental:** Mitigação de riscos em que o elo mais vulnerável da segurança da informação é o fator humano.
